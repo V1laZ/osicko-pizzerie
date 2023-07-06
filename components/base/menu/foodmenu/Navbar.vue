@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="row justify-content-center mb-3">
+        <div v-if="navItems.length" class="row justify-content-center mb-3">
             <div class="col-auto p-1" v-for="item in navItems" :key="item.id">
                 <BaseMenuFoodmenuButton 
                     @click="$emit('click', item.id)" 
@@ -32,6 +32,7 @@ const props = defineProps({
 })
 
 const activeItem = computed(() => {
+    if (!props.navItems.length) return
     return props.navItems.find(item => item.id === props.activeTab)
 })
 </script>
