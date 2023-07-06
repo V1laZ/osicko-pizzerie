@@ -27,14 +27,18 @@
         </div>
       </div>
       <!-- Food menu -->
-      <h3 class="fs-1 text-center mt-4 mb-3">Jídelní lístek</h3>
       <div class="bottom-line pb-5">
+        <h3 class="fs-1 text-center mt-4 mb-3">Jídelní lístek</h3>
         <BaseMenuFoodmenu :content="foodNavItemsContent" />
       </div>
       <!-- Drinks menu -->
-      <h3 class="fs-1 text-center mt-4 mb-3">Nápojový lístek</h3>
+      <div class="pb-5 mb-5">
+        <h3 class="fs-1 text-center mt-4 mb-3">Nápojový lístek</h3>
         <BaseMenuFoodmenu :content="drinksNavItemsContent" />
+      </div>
     </div>
+    <!-- Open hours -->
+    <BaseOpenHours />
   </div>
 </template>
 
