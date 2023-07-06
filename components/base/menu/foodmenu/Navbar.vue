@@ -9,7 +9,7 @@
                 />
             </div>
         </div>
-        <div class="ff-inter text-center mb-4">
+        <div v-if="activeItem" class="ff-inter text-center mb-4">
             <h3 class="fw-bold m-0">{{ activeItem.name }}</h3>
             <p v-if="activeItem.name === 'Pizza'" class="text-body-secondary m-0">350–400g</p>
             <p v-if="activeItem.description" class="text-body-secondary">{{ activeItem.description }}</p>

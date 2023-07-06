@@ -1,5 +1,6 @@
 <template>
     <button 
+        type="button"
         class="ff-sans text-white text-nowrap border border-0 fs-4 bg-primary p-2" 
         @click="$emit('click')"
         :class="{'bg-secondary': active}"

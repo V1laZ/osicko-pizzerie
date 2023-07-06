@@ -6,7 +6,7 @@
     </PageHeader>
     <div class="container">
       <!-- Services -->
-      <div class="py-5 d-flex justify-content-center align-items-center flex-column services-wrapper w-100">
+      <div class="py-5 d-flex justify-content-center align-items-center flex-column bottom-line w-100">
         <h3 class="fs-1 mb-4">Nabízíme</h3>
         <div class="row gx-4 gy-4 w-100">
           <div class="col-12 col-md d-flex flex-column align-items-center gap-3">
@@ -37,7 +37,7 @@
 .service-text {
   max-width: 203px;
 }
-.services-wrapper {
+.bottom-line {
   border-bottom: 1px solid rgba(0, 0, 0, 0.10);
 }
 </style>
