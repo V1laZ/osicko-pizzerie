@@ -9,7 +9,8 @@
 const navItemsContent = ref([
     {
         id: 1,
-        "text": "Pizza",
+        "name": "Pizza",
+        "description": "Při vyžádání půlené porce - příplatek 10kč",
         "content": [
             {
                 id: 1,
@@ -51,27 +52,27 @@ const navItemsContent = ref([
     },
     {
         id: 2,
-        "text": "Špagety",
+        "name": "Špagety",
     },
     {
         id: 3,
-        "text": "Tortelini",
+        "name": "Tortelini",
     },
     {
         id: 4,
-        "text": "Maso",
+        "name": "Maso",
     },
     {
         id: 5,
-        "text": "Zapékané speciality",
+        "name": "Zapékané speciality",
     },
     {
         id: 6,
-        "text": "Polévky",
+        "name": "Polévky",
     },
     {
         id: 7,
-        "text": "Saláty",
+        "name": "Saláty",
     },
 ])
 const selectedContent = ref([])
@@ -85,7 +86,8 @@ const navItems = computed(() => {
     return navItemsContent.value.map(item => {
         return {
             id: item.id,
-            text: item.text
+            name: item.name,
+            description: item.description
         }
     })
 })
