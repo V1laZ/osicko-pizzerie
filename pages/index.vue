@@ -33,7 +33,7 @@
       </div>
       <!-- Drinks menu -->
       <h3 class="fs-1 text-center mt-4 mb-3">Nápojový lístek</h3>
-
+        <BaseMenuFoodmenu :content="drinksNavItemsContent" />
     </div>
   </div>
 </template>
@@ -106,6 +106,69 @@ const foodNavItemsContent = ref([
     {
         id: 7,
         "name": "Saláty",
+    },
+])
+
+const drinksNavItemsContent = ref([
+    {
+        id: 1,
+        "name": "Alkoholické nápoje",
+        "content": [
+          {
+            id: 1,
+            "name": "Pivo",
+            "description": "500ml",
+            "price": 35
+          },
+          {
+            id: 2,
+            "name": "Bacardi",
+            "description": "4cl",
+            "price": 60
+          },
+          {
+            id: 3,
+            "name": "Becherovka",
+            "description": "4cl",
+            "price": 60
+          },
+          {
+            id: 4,
+            "name": "Fernet",
+            "description": "4cl",
+            "price": 60
+          },
+          {
+            id: 5,
+            "name": "Gin",
+            "description": "4cl",
+            "price": 60
+          }
+        ]
+    },
+    {
+        id: 2,
+        "name": "Nealkoholické nápoje",
+    },
+    {
+        id: 3,
+        "name": "Káva",
+    },
+    {
+        id: 4,
+        "name": "Čaj",
+    },
+    {
+        id: 5,
+        "name": "Víno",
+    },
+    {
+        id: 6,
+        "name": "Pivo",
+    },
+    {
+        id: 7,
+        "name": "Destiláty",
     },
 ])
 </script>
