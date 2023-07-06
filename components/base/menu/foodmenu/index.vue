@@ -76,11 +76,9 @@ const navItemsContent = ref([
     },
 ])
 const selectedContent = ref([])
-const activeTab = ref(0)
+const activeTab = ref(1)
 
-onMounted(() => {
-    setActiveContent(1)
-})
+setActiveContent(1)
 
 const navItems = computed(() => {
     return navItemsContent.value.map(item => {
