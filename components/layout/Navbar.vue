@@ -16,11 +16,11 @@
                             v-for="(link, index) in links"
                             :key="index"
                             :to="link.path"
-                            class="nav-link"
+                            class="nav-link border-right px-3"
                             @click="moveIndicator($event)"
                         >
                             <span>{{ link.name }}</span>
-                            <span class="ms-3 opacity-25" v-if="index < links.length - 1">|</span>
+                            <!-- <span class="ms-3 opacity-25" v-if="index < links.length - 1">|</span> -->
                         </NuxtLink>
                         <span class="indicator" :style="indicatorStyle"></span>
                     </div>
@@ -96,6 +96,9 @@ watch(() => route.fullPath, () => {
 </script>
 
 <style scoped>
+.border-right {
+    border-right: 1px solid #45301f;
+}
 .navbar-text {
     color: #45301f;
     font-size: 20px;
