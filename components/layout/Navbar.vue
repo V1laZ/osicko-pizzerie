@@ -43,10 +43,19 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+interface Link {
+  path: string;
+  name: string;
+}
+
+interface MoveIndicatorOptions {
+  target: EventTarget | null;
+}
+
 const route = useRoute();
 
-const links = [
+const links = <Link[]>[
   {
     path: "/menu",
     name: "Jídelní lístek",
@@ -65,16 +74,18 @@ const links = [
   },
 ];
 const indicatorStyle = ref({});
-const menu = ref(null);
+const menu = ref<Element>();
 
-function moveIndicator(event) {
+const moveIndicator = ({ target }: MoveIndicatorOptions) => {
+  if (!target || !(target instanceof HTMLElement)) return;
   indicatorStyle.value = {
-    width: `${event.target.offsetWidth}px`,
-    transform: `translateX(${event.target.offsetLeft}px)`,
+    width: `${target.offsetWidth}px`,
+    transform: `translateX(${target.offsetLeft}px)`,
   };
 }
 
-function updateIndicator() {
+const updateIndicator = () => {
+  if (!menu.value) return;
   if (route.fullPath === "/") {
     indicatorStyle.value = {
       width: "0px",

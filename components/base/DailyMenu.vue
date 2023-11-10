@@ -17,8 +17,8 @@
   </div>
 </template>
 
-<script setup>
-const menuItems = ref([
+<script setup lang="ts">
+const menuItems = ref<DailyMenuItem[]>([
   {
     id: 1,
     name: "Sekaná, štouchaný brambor, kys. okurka",

@@ -2,8 +2,8 @@
   <div>
     <div v-if="navItems.length" class="row justify-content-center mb-3">
       <div class="col-auto p-1" v-for="item in navItems" :key="item.id">
-        <BaseMenuFoodmenuButton
-          @click="$emit('click', item.id)"
+        <BaseMenuButton
+          @click="emit('select', item.id)"
           :text="item.name"
           :active="activeTab === item.id"
         />
@@ -21,11 +21,10 @@
   </div>
 </template>
 
-<script setup>
-const emit = defineEmits(["click"]);
+<script setup lang="ts">
 const props = defineProps({
   navItems: {
-    type: Array,
+    type: Array as PropType<MenuNavbarItem[]>,
     default: () => [],
   },
   activeTab: {
@@ -33,6 +32,9 @@ const props = defineProps({
     default: 0,
   },
 });
+const emit = defineEmits<{
+  (event: 'select', id: number): void
+}>()
 
 const activeItem = computed(() => {
   if (!props.navItems.length) return;

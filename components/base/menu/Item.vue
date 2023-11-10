@@ -13,7 +13,7 @@
             itemprop="suitableForDiet"
             itemscope
             itemtype="https://schema.org/RestrictedDiet"
-            >{{ item.allergens }}</span
+            >{{ item.allergens.join(', ') }}</span
           >
         </h5>
         <p
@@ -38,11 +38,11 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 defineProps({
   item: {
-    type: Object,
-    default: () => {},
+    type: Object as PropType<MenuItem>,
+    required: true,
   },
 });
 </script>

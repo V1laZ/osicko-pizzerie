@@ -2,7 +2,7 @@
   <div class="ff-sans">
     <!-- Header -->
     <PageHeader title="Pizzerie Osíčko" background="/img/pizza-main.png" main>
-      <BaseMenuDailyMenu />
+      <BaseDailyMenu />
     </PageHeader>
     <div class="container">
       <!-- Services -->
@@ -49,12 +49,12 @@
       <!-- Food menu -->
       <div class="bottom-line pb-5">
         <h3 class="fs-1 text-center mt-4 mb-3">Jídelní lístek</h3>
-        <BaseMenuFoodmenu :content="foodNavItemsContent" />
+        <BaseMenu :menu="foodMenu" />
       </div>
       <!-- Drinks menu -->
       <div class="pb-5 mb-5">
         <h3 class="fs-1 text-center mt-4 mb-3">Nápojový lístek</h3>
-        <BaseMenuFoodmenu :content="drinksNavItemsContent" />
+        <BaseMenu :menu="drinksMenu" />
       </div>
     </div>
     <!-- Open hours -->
@@ -62,8 +62,8 @@
   </div>
 </template>
 
-<script setup>
-const foodNavItemsContent = ref([
+<script setup lang="ts">
+const foodMenu = ref<Menu[]>([
   {
     id: 1,
     name: "Pizza",
@@ -72,35 +72,35 @@ const foodNavItemsContent = ref([
       {
         id: 1,
         name: "Pizza Margherita",
-        allergens: "1, 3, 7",
+        allergens: ["1", "3", "7"],
         description: "sýr, rajčatový základ",
         price: 148,
       },
       {
         id: 2,
         name: "Pizza Salame",
-        allergens: "1, 3, 7",
+        allergens: ["1", "3", "7"],
         description: "sýr, salám, rajčatový základ",
         price: 148,
       },
       {
         id: 3,
         name: "Pizza Prosciutto",
-        allergens: "1, 3, 7",
+        allergens: ["1", "3", "7"],
         description: "sýr, šunka, rajčatový základ",
         price: 148,
       },
       {
         id: 4,
         name: "Pizza Capricciosa",
-        allergens: "1, 3, 7",
+        allergens: ["1", "3", "7"],
         description: "sýr, šunka, žampiony, rajčatový základ",
         price: 148,
       },
       {
         id: 5,
         name: "Pizza Quattro Formaggi",
-        allergens: "1, 3, 7",
+        allergens: ["1", "3", "7"],
         description: "sýr, gorgonzola, eidam, mozzarella, rajčatový základ",
         price: 148,
       },
@@ -109,33 +109,46 @@ const foodNavItemsContent = ref([
   {
     id: 2,
     name: "Špagety",
+    description: "",
+    content: []
   },
   {
     id: 3,
     name: "Tortelini",
+    description: "",
+    content: []
   },
   {
     id: 4,
     name: "Maso",
+    description: "",
+    content: []
   },
   {
     id: 5,
     name: "Zapékané speciality",
+    description: "",
+    content: []
   },
   {
     id: 6,
     name: "Polévky",
+    description: "",
+    content: []
   },
   {
     id: 7,
     name: "Saláty",
+    description: "",
+    content: []
   },
 ]);
 
-const drinksNavItemsContent = ref([
+const drinksMenu = ref<Menu[]>([
   {
     id: 1,
     name: "Alkoholické nápoje",
+    description: "",
     content: [
       {
         id: 1,
@@ -172,26 +185,38 @@ const drinksNavItemsContent = ref([
   {
     id: 2,
     name: "Nealkoholické nápoje",
+    description: "",
+    content: []
   },
   {
     id: 3,
     name: "Káva",
+    description: "",
+    content: []
   },
   {
     id: 4,
     name: "Čaj",
+    description: "",
+    content: []
   },
   {
     id: 5,
     name: "Víno",
+    description: "",
+    content: []
   },
   {
     id: 6,
     name: "Pivo",
+    description: "",
+    content: []
   },
   {
     id: 7,
     name: "Destiláty",
+    description: "",
+    content: []
   },
 ]);
 </script>

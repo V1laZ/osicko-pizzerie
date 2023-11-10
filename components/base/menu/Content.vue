@@ -1,15 +1,15 @@
 <template>
   <div class="row gy-3 row-cols-1 row-cols-md-2">
     <div class="col" v-for="item in content" :key="item.id">
-      <BaseMenuFoodmenuItem :item="item" />
+      <BaseMenuItem :item="item" />
     </div>
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 defineProps({
   content: {
-    type: Array,
+    type: Array as PropType<MenuItem[]>,
     default: () => [],
   },
 });
