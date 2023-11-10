@@ -1,129 +1,139 @@
 <template>
-    <div class="bg-body-tertiary">
-        <nav class="navbar container navbar-expand-lg">
-            <div class="container-fluid">
-                <NuxtLink to="/" class="navbar-brand">
-                    <img src="~/assets/icons/home.svg" width="30" height="30" />
-                </NuxtLink>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"
-                >
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse navbar-text" id="navbarNavAltMarkup">
-                    <div class="navbar-nav" ref="menu">
-                        <NuxtLink
-                            v-for="(link, index) in links"
-                            :key="index"
-                            :to="link.path"
-                            class="nav-link border-right px-3"
-                            @click="moveIndicator($event)"
-                        >
-                            <span>{{ link.name }}</span>
-                            <!-- <span class="ms-3 opacity-25" v-if="index < links.length - 1">|</span> -->
-                        </NuxtLink>
-                        <span class="indicator" :style="indicatorStyle"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="d-flex gap-2 align-items-center navbar-text">
-                <img src="@/assets/icons/cart.svg">
-                <span class="language-text">
-                    CZ
-                </span>
-            </div>
-        </nav>
-    </div>
+  <div class="bg-body-tertiary">
+    <nav class="navbar container navbar-expand-lg">
+      <div class="container-fluid">
+        <NuxtLink to="/" class="navbar-brand">
+          <img src="~/assets/icons/home.svg" width="30" height="30" />
+        </NuxtLink>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse navbar-text"
+          id="navbarNavAltMarkup"
+        >
+          <div class="navbar-nav" ref="menu">
+            <NuxtLink
+              v-for="(link, index) in links"
+              :key="index"
+              :to="link.path"
+              class="nav-link border-right px-3"
+              @click="moveIndicator($event)"
+            >
+              <span>{{ link.name }}</span>
+              <!-- <span class="ms-3 opacity-25" v-if="index < links.length - 1">|</span> -->
+            </NuxtLink>
+            <span class="indicator" :style="indicatorStyle"></span>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex gap-2 align-items-center navbar-text">
+        <img src="@/assets/icons/cart.svg" />
+        <span class="language-text"> CZ </span>
+      </div>
+    </nav>
+  </div>
 </template>
 
 <script setup>
-const route = useRoute()
+const route = useRoute();
 
 const links = [
-    {
-        path: '/menu',
-        name: 'Jídelní lístek'
-    },
-    {
-        path: '/drinks-menu',
-        name: 'Nápojový lístek'
-    },
-    {
-        path: '/about',
-        name: 'O nás'
-    },
-    {
-        path: '/contact',
-        name: 'Kontakt'
-    }
+  {
+    path: "/menu",
+    name: "Jídelní lístek",
+  },
+  {
+    path: "/drinks-menu",
+    name: "Nápojový lístek",
+  },
+  {
+    path: "/about",
+    name: "O nás",
+  },
+  {
+    path: "/contact",
+    name: "Kontakt",
+  },
 ];
 const indicatorStyle = ref({});
-const menu = ref(null)
+const menu = ref(null);
 
 function moveIndicator(event) {
-    indicatorStyle.value = {
-        width: `${event.target.offsetWidth}px`,
-        transform: `translateX(${event.target.offsetLeft}px)`
-    }
+  indicatorStyle.value = {
+    width: `${event.target.offsetWidth}px`,
+    transform: `translateX(${event.target.offsetLeft}px)`,
+  };
 }
 
 function updateIndicator() {
-    if (route.fullPath === '/') {
-        indicatorStyle.value = {
-            width: '0px',
-            transform: `translateX(0px)`
-        }
-        return
-    }
-    
-    const activeLink = menu.value.querySelector('.router-link-active')
-    if (activeLink) {
-        moveIndicator({ target: activeLink.firstChild })
-    }
+  if (route.fullPath === "/") {
+    indicatorStyle.value = {
+      width: "0px",
+      transform: `translateX(0px)`,
+    };
+    return;
+  }
+
+  const activeLink = menu.value.querySelector(".router-link-active");
+  if (activeLink) {
+    moveIndicator({ target: activeLink.firstChild });
+  }
 }
 
 onMounted(() => {
-    nextTick(() => {
-        updateIndicator()
-    })
-})
+  nextTick(() => {
+    updateIndicator();
+  });
+});
 
-watch(() => route.fullPath, () => {
+watch(
+  () => route.fullPath,
+  () => {
     nextTick(() => {
-        updateIndicator()
-    })
-})
+      updateIndicator();
+    });
+  }
+);
 </script>
 
 <style scoped>
 .border-right {
-    border-right: 1px solid #45301f;
+  border-right: 1px solid #45301f;
 }
 .navbar-text {
-    color: #45301f;
-    font-size: 20px;
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-    letter-spacing: 0.2px;
+  color: #45301f;
+  font-size: 20px;
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: 0.2px;
 }
 .language-text {
-    color: #000;
-    font-size: 15px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+  color: #000;
+  font-size: 15px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 .navbar-nav {
-    position: relative;
+  position: relative;
 }
 .indicator {
-    position: absolute;
-    height: 2px;
-    background-color: #45301f;
-    transition: all 0.3s ease-in-out;
-    bottom: 0;
+  position: absolute;
+  height: 2px;
+  background-color: #45301f;
+  transition: all 0.3s ease-in-out;
+  bottom: 0;
 }
 </style>
