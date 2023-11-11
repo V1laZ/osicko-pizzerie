@@ -25,8 +25,10 @@
               v-for="(link, index) in links"
               :key="index"
               :to="link.path"
-              class="nav-link border-right px-3"
-              @click="moveIndicator($event)"
+              class="nav-link px-3"
+              :class="{
+                'border-right': index !== links.length - 1
+              }"
             >
               <span>{{ link.name }}</span>
               <!-- <span class="ms-3 opacity-25" v-if="index < links.length - 1">|</span> -->
